@@ -13,12 +13,14 @@ import {
 
 import logo from "../../../../public/TattooUs.png"
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { LogIn, Menu } from "lucide-react";
 import { useState } from "react";
 
 export function Header() {
 
   const [isOpen, setIsOpen] = useState(false)
+
+  const session = true
 
   const navItems = [
     {href: "#profissionais", label: "Profissionais"},
@@ -33,11 +35,23 @@ export function Header() {
             asChild
             className="bg-transparent hover:bg-transparent text-white shadow-none"
           >
-          <Link href={item.href}>
+          <Link href={item.href} className="text-base">
             {item.label}
           </Link>
           </Button>
       ))}
+
+      {session ? (
+        <Link href="/dashboard" className="flex items-center justify-center gap-2 bg-zinc-950 text-red-500 px-4 py-2 rounded-2xl"
+        >
+          Trícia 
+        </Link>
+      ): (
+        <Button className="bg-zinc-950 text-red-500">
+          <LogIn />
+          Fazer Login
+        </Button>
+      )}
     </>
   )
 
